@@ -228,8 +228,8 @@ else:
 
     scaler = MinMaxScaler()
     X_scaled = scaler.fit_transform(X)
-# Neural Network model
-model = tf.keras.Sequential([
+   # Neural Network model
+   model = tf.keras.Sequential([
     tf.keras.layers.Dense(16, activation="relu", input_shape=(1,)),
     tf.keras.layers.Dense(8, activation="relu"),
     tf.keras.layers.Dense(1)
