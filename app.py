@@ -240,11 +240,11 @@ else:
 
     model.fit(X_scaled, y, epochs=100, verbose=0)
 
-# Predict next month
-next_month = scaler.transform([[monthly_data["MonthNumber"].max()+1]])
-prediction = model.predict(next_month)
+    # Predict next month
+    next_month = scaler.transform([[monthly_data["MonthNumber"].max()+1]])
+    prediction = model.predict(next_month)
 
-st.metric("Deep Learning Predicted Sales", round(prediction[0][0], 2))
+    st.metric("Deep Learning Predicted Sales", round(prediction[0][0], 2))
 
 # Deep Learning Graph
 fig, ax = plt.subplots()
