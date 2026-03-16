@@ -246,18 +246,18 @@ else:
 
     st.metric("Deep Learning Predicted Sales", round(prediction[0][0], 2))
 
-# Deep Learning Graph
-fig, ax = plt.subplots()
+    # Deep Learning Graph
+    fig, ax = plt.subplots()
 
-ax.plot(monthly_data["MonthNumber"], monthly_data["Revenue"], marker="o")
+    ax.plot(monthly_data["MonthNumber"], monthly_data["Revenue"], marker="o")
 
-ax.scatter(monthly_data["MonthNumber"].max()+1, prediction[0][0], color="red")
+    ax.scatter(monthly_data["MonthNumber"].max()+1, prediction[0][0], color="red")
 
-ax.set_title("Deep Learning Sales Forecast")
-ax.set_xlabel("Month")
-ax.set_ylabel("Revenue")
+    ax.set_title("Deep Learning Sales Forecast")
+    ax.set_xlabel("Month")
+    ax.set_ylabel("Revenue")
 
-st.pyplot(fig)
+    st.pyplot(fig)
 
 # Download dataset Button
 st.download_button(
