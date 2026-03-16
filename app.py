@@ -209,22 +209,25 @@ st.write("Top High Value Customers")
 st.bar_chart(top_customers["CLV"])
 
 # Deep Learning Sales Prediction
-import tensorflow as tf
-from sklearn.preprocessing import MinMaxScaler
-
+try:
+    import tensorflow as tf
+    from sklearn.preprocessing import MinMaxScaler
+    dl_available = True
+except:
+    dl_available = False
 st.subheader("Deep Learning Sales Prediction")
+if not dl_available:
+    st.warning("Deep Learning module not available on cloud environment.")
+else:
+    # Prepare monthly data
+    df["MonthNumber"] = df["InvoiceDate"].dt.month
+    monthly_data = df.groupby("MonthNumber")["Revenue"].sum().reset_index()
 
-# Prepare monthly data
-df["MonthNumber"] = df["InvoiceDate"].dt.month
-monthly_data = df.groupby("MonthNumber")["Revenue"].sum().reset_index()
+    X = monthly_data[["MonthNumber"]]
+    y = monthly_data["Revenue"]
 
-X = monthly_data[["MonthNumber"]]
-y = monthly_data["Revenue"]
-
-# Scale data
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
-
+    scaler = MinMaxScaler()
+    X_scaled = scaler.fit_transform(X)
 # Neural Network model
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(16, activation="relu", input_shape=(1,)),
