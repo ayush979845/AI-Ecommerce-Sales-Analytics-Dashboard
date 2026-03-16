@@ -233,7 +233,7 @@ else:
     tf.keras.layers.Dense(16, activation="relu", input_shape=(1,)),
     tf.keras.layers.Dense(8, activation="relu"),
     tf.keras.layers.Dense(1)
-])
+     ])
 
 model.compile(
     optimizer="adam",
