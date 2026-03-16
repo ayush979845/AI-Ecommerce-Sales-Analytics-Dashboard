@@ -8,7 +8,7 @@ st.title("AI Powered E-Commerce Sales Prediction & Analytics Dashboard")
 st.write("Machine Learning and Deep Learning based E-Commerce Data Analysis System")
 
 # Load dataset
-df = pd.read_csv("https://raw.githubusercontent.com/ayush979845/AI-Ecommerce-Sales-Analytics-Dashboard/main/online_retail.csv.zip")
+df = pd.read_csv("online_retail.csv.zip", compression="zip")
 
 # Remove rows where CustomerID is missing
 df = df.dropna(subset=["CustomerID"])
