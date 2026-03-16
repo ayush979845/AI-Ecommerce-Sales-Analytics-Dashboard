@@ -228,19 +228,17 @@ else:
 
     scaler = MinMaxScaler()
     X_scaled = scaler.fit_transform(X)
-    # Neural Network model
+
+    # Neural Network
     model = tf.keras.Sequential([
-    tf.keras.layers.Dense(16, activation="relu", input_shape=(1,)),
-    tf.keras.layers.Dense(8, activation="relu"),
-    tf.keras.layers.Dense(1)
+        tf.keras.layers.Dense(16, activation="relu", input_shape=(1,)),
+        tf.keras.layers.Dense(8, activation="relu"),
+        tf.keras.layers.Dense(1)
     ])
 
-model.compile(
-    optimizer="adam",
-    loss="mse"
-)
+    model.compile(optimizer="adam", loss="mse")
 
-model.fit(X_scaled, y, epochs=100, verbose=0)
+    model.fit(X_scaled, y, epochs=100, verbose=0)
 
 # Predict next month
 next_month = scaler.transform([[monthly_data["MonthNumber"].max()+1]])
